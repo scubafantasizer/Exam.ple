@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["../shared/*"],
+      "zod": ["node_modules/zod"],
+      "drizzle-orm": ["node_modules/drizzle-orm"],
+      "drizzle-orm/*": ["node_modules/drizzle-orm/*"],
+      "better-sqlite3": ["node_modules/@types/better-sqlite3", "node_modules/better-sqlite3"]
+    },
+    "rootDirs": ["src", "../shared"]
+  },
+  "include": ["src", "../shared/db", "../shared/api-zod"]
+}

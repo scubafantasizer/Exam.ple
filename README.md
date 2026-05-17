@@ -1,140 +1,136 @@
-# exam.ple
+# Yazıcı — AI Study Coach
 
-A fully AI-driven local study coach. No cloud, no subscriptions, no waiting.
-
-Everything runs on your machine. Your data never leaves. Open your browser and it works like an app.
+A local-first, AI-powered study management app for students preparing for exams. Built with Node.js, React, SQLite, and Google Gemini.
 
 ---
 
-## What it does
+## Features
 
-- **AI agent** that tracks your topics, logs wrong answers, builds gap analyses, and creates study notes — automatically, without being asked
-- **Exam tracker** — upload a PDF or enter question results; AI analyzes your performance
-- **Topic progress** — track study progress per subject with a slider
-- **Wrong answer log** — auto-corrects stale entries after 14 days
-- **Notes & lists** — AI creates and saves Markdown notes directly to your notebook
-- **YouTube resource organizer** — link videos and playlists to topics
-- **Multi-session chat** — persistent topic-based chat sessions with full history
-
-The AI is powered by **Google Gemini 2.0 Flash** via your own API key.
+| Feature | Description |
+|---|---|
+| **AI Agent** | A Gemini-powered agent that can add topics, create notes, log mistakes, and analyze your study status — all by chat |
+| **Topics** | Track subjects with progress bars and completion status |
+| **Exams** | Log practice tests, mark each question correct/wrong/blank, and get AI analysis of your weaknesses |
+| **Mistakes** | Track wrong and blank answers, add notes, mark as corrected |
+| **Notes & Lists** | Markdown notes, tables, schedules, and lists — can be created by the AI automatically |
+| **Chat** | Conversational AI tutoring, tied to specific topics |
+| **Resources** | Save YouTube videos and playlists, organized by topic |
+| **Bilingual** | Full Turkish and English UI — toggle in Settings or sidebar |
 
 ---
 
 ## Requirements
 
-- **Node.js 18+** — [nodejs.org](https://nodejs.org) (LTS version)
-- A free **Gemini API key** — [aistudio.google.com](https://aistudio.google.com/app/apikey)
+- **Node.js 18 or higher** (Node 20 LTS recommended; Node 26 works)
+- A free **Gemini API key** from [Google AI Studio](https://aistudio.google.com/app/apikey)
+- Linux, macOS, or WSL
+
+> The start script automatically installs Node.js if it's missing, and handles all distros (Debian/Ubuntu/Zorin/Pardus, Fedora/Nobara, Arch/Manjaro/NyArch/Garuda, openSUSE, Void, Alpine, and more).
 
 ---
 
-## Getting started
-
-### Windows
-
-Double-click `scripts/start.bat`  
-(or run it from the terminal)
-
-### macOS / Linux
+## Quick Start
 
 ```bash
-bash scripts/start.sh
+# 1. Extract the zip
+unzip Yazıcı.zip
+cd Yazıcı
+
+# 2. Make the start script executable (only needed once)
+chmod +x scripts/start.sh
+
+# 3. Run
+./scripts/start.sh
 ```
 
-The first run installs dependencies and builds the app. This takes about 1–2 minutes. After that, it starts in seconds.
+The first run installs dependencies and builds the app (~1 minute). Subsequent starts are instant.
 
-Your browser will open automatically at **http://localhost:3001**.
+The app opens automatically in your browser at **http://localhost:3001**.
 
 ---
 
-## First use
+## First-Time Setup
 
-1. Go to **Settings** and enter your Gemini API key
-2. Optionally set your name and study goal
-3. Start chatting with the AI agent — it will build your topic list, track errors, and create plans
+1. Open **Settings** (sidebar → Settings)
+2. Enter your **Gemini API key** — get one free at [aistudio.google.com](https://aistudio.google.com/app/apikey)
+3. Optionally set your name and study goal
+4. Go to **AI Agent** and start chatting — it can set everything else up for you
 
 ---
 
-## Project structure
+## Project Structure
 
 ```
-exam.ple/
+Yazıcı/
 ├── scripts/
-│   ├── start.bat          ← Windows launcher
-│   └── start.sh           ← macOS/Linux launcher
-├── server/
+│   └── start.sh          # Cross-distro launcher
+├── server/               # Express + TypeScript backend
 │   ├── src/
-│   │   ├── routes/        ← Express API routes
-│   │   ├── lib/           ← Logger
-│   │   ├── ai-skills.md   ← AI agent instructions
-│   │   ├── app.ts
-│   │   └── index.ts
-│   ├── build.mjs
-│   └── package.json
-├── client/
+│   │   ├── routes/       # API route handlers
+│   │   ├── lib/          # Logger, helpers
+│   │   └── ai-skills.md  # AI agent system prompt
+│   └── build.mjs         # esbuild config
+├── client/               # React + Vite frontend
 │   ├── src/
-│   │   ├── pages/         ← React pages
-│   │   ├── components/    ← UI components
-│   │   ├── hooks/
-│   │   └── lib/
-│   └── package.json
+│   │   ├── pages/        # One file per page
+│   │   ├── components/   # Shared UI (Layout)
+│   │   ├── hooks/        # useLang
+│   │   └── lib/          # api.ts, i18n.ts, types.ts, utils.ts
+│   └── vite.config.ts
 ├── shared/
-│   ├── db/                ← SQLite schema + Drizzle ORM
-│   ├── api-zod/           ← Zod validation schemas
-│   └── api-client/        ← Typed React Query hooks
+│   ├── db/               # Drizzle ORM schema + DB connection
+│   └── api-zod/          # Zod schemas shared by server & client types
 └── data/
-    └── exam-ple.db        ← Created automatically on first run
+    └── yazici.db       # SQLite database (auto-created)
 ```
 
 ---
 
-## How it works
+## API Overview
 
-```
-start.bat / start.sh
-       │
-       ▼
-  Local server (Express · Node.js · port 3001)
-       │
-       ├─── React frontend   (served statically)
-       ├─── SQLite database  (data/ — your machine only)
-       └─── AI agent         (Gemini API — your key, your requests)
-```
+All endpoints are under `/api`:
 
-The server builds once. After that, `start.bat`/`start.sh` launches it in under a second. No Electron, no installer, no `.exe` to trust — just Node serving a local web app in your browser.
-
----
-
-## Development
-
-To work on the code with hot-reload:
-
-```bash
-# Terminal 1 — API server with auto-restart
-npm run dev --prefix server
-
-# Terminal 2 — React frontend with HMR
-npm run dev --prefix client
-```
-
-The client dev server runs on port 5173 and proxies `/api` to the server on port 3001.
+| Method | Path | Description |
+|---|---|---|
+| GET | `/dashboard/summary` | Stats overview |
+| GET/POST/PATCH/DELETE | `/topics` | Topic CRUD |
+| GET/POST/DELETE | `/resources` | YouTube resource CRUD |
+| GET/POST/PATCH/DELETE | `/notes` | Notes/lists CRUD |
+| GET/POST/PATCH/DELETE | `/wrong-answers` | Mistake tracker |
+| GET/POST/DELETE | `/exams` | Exam CRUD |
+| GET | `/exams/:id` | Exam with questions |
+| PUT | `/exams/:id/questions` | Save question results |
+| POST | `/exams/:id/analyze` | AI analysis of exam |
+| GET/POST | `/chat/sessions` | Chat session CRUD |
+| GET/POST | `/chat/sessions/:id/messages` | Messages + AI reply |
+| POST | `/ai/chat` | Stateless AI chat |
+| POST | `/ai/agent` | AI agent with function calling |
+| GET/PUT | `/settings` | App settings |
 
 ---
 
-## Tech stack
+## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| AI | Google Gemini 2.0 Flash |
-| Backend | Express 5, TypeScript, TSX |
-| Database | SQLite (better-sqlite3) + Drizzle ORM |
-| Frontend | React 18, Vite, Tailwind CSS v4 |
-| UI components | shadcn/ui (Radix UI) |
-| Routing | Wouter |
-| Data fetching | TanStack Query |
-| Validation | Zod |
+- **Backend**: Node.js, Express, TypeScript, Drizzle ORM, better-sqlite3, Pino
+- **Frontend**: React 18, Vite, Tailwind CSS v4, TanStack Query, Wouter, react-markdown
+- **AI**: Google Gemini 2.0 Flash (via `@google/generative-ai`)
+- **Database**: SQLite (file-based, no server needed)
+- **Build**: esbuild (server), Vite (client)
 
 ---
 
-## Privacy
+## Language
 
-All data is stored in `data/exam-ple.db` on your machine. The only external network call is to the Gemini API (using your own key). Nothing is sent to any server except Google's AI API.
+The UI is fully bilingual. Toggle between **Turkish** and **English** at the bottom of the sidebar or in Settings. The AI Agent and Chat responses are always in Turkish (this is controlled by the server-side system prompt — edit `server/src/routes/ai-chat.ts` and `ai-agent.ts` to change).
+
+---
+
+## Troubleshooting
+
+**"Gemini API key not set"** — Go to Settings and paste your API key from [aistudio.google.com](https://aistudio.google.com/app/apikey).
+
+**Port 3001 already in use** — Kill whatever is using it: `lsof -ti:3001 | xargs kill`
+
+**Node version error** — Run `node -v`. If below 18, update Node from [nodejs.org](https://nodejs.org) or use your distro's package manager.
+
+**Clean reinstall** — Delete `server/node_modules`, `client/node_modules`, `server/dist`, and `client/dist`, then run `./scripts/start.sh` again.
