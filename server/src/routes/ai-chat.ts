@@ -41,7 +41,7 @@ router.post("/ai/chat", async (req, res): Promise<void> => {
 
   const currentPage = ctx?.currentPage ?? "ana sayfa";
 
-  const systemPrompt = `Sen "Yazıcı" adlı kişisel çalışma asistanısın. Öğrencilerin sınav hazırlığında yardım ediyorsun.
+  const systemPrompt = `Sen "exam.ple" adlı kişisel çalışma asistanısın. Öğrencilerin sınav hazırlığında yardım ediyorsun.
 
 ${userName ? `Öğrencinin adı: ${userName}` : ""}
 ${studyGoal ? `Hedef: ${studyGoal}` : ""}
@@ -69,7 +69,7 @@ Bu blok sadece içerik kaydedilmesi gerektiğinde olsun. Türkçe yanıt ver.`;
   try {
     const genAI = new GoogleGenerativeAI(apiKey);
     
-    // Yazıcı-style Tiered Routing
+    // exam.ple-style Tiered Routing
     const modelName = "gemini-3.1-flash-lite";
     const model = genAI.getGenerativeModel({ model: modelName });
 

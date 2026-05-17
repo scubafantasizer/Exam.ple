@@ -7,7 +7,7 @@ ROOT="$SCRIPT_DIR/.."
 
 echo ""
 echo " ================================================"
-echo "  Yazıcı — AI Study Coach"
+echo "  exam.ple — AI Study Coach"
 echo " ================================================"
 echo ""
 
@@ -237,13 +237,13 @@ if ! npm run build --prefix "$ROOT/client"; then
 fi
 
 echo ""
-echo " Starting Yazıcı..."
+echo " Starting exam.ple..."
 echo ""
 
 cd "$ROOT"
 
 export PORT=3001
-export DB_PATH="data/Yazıcı.db"
+export DB_PATH="data/exam.ple.db"
 export CLIENT_DIST="client/dist"
 
 # ── Kill any zombie process on port 3001 ──────────────────────────────────────

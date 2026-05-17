@@ -1,4 +1,4 @@
-# Yazıcı — AI Study Coach
+# exam.ple — AI Study Coach
 
 A local-first, AI-powered study management app for students preparing for exams. Built with Node.js, React, SQLite, and Google Gemini.
 
@@ -33,8 +33,8 @@ A local-first, AI-powered study management app for students preparing for exams.
 
 ```bash
 # 1. Extract the zip
-unzip Yazıcı.zip
-cd Yazıcı
+unzip exam.ple.zip
+cd exam.ple
 
 # 2. Make the start script executable (only needed once)
 chmod +x scripts/start.sh
@@ -61,7 +61,7 @@ The app opens automatically in your browser at **http://localhost:3001**.
 ## Project Structure
 
 ```
-Yazıcı/
+exam.ple/
 ├── scripts/
 │   └── start.sh          # Cross-distro launcher
 ├── server/               # Express + TypeScript backend
@@ -81,7 +81,7 @@ Yazıcı/
 │   ├── db/               # Drizzle ORM schema + DB connection
 │   └── api-zod/          # Zod schemas shared by server & client types
 └── data/
-    └── yazici.db       # SQLite database (auto-created)
+    └── exam-ple.db       # SQLite database (auto-created)
 ```
 
 ---

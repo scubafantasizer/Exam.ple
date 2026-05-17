@@ -107,7 +107,7 @@ const translations = {
     agent_title: "AI Ajan",
     agent_subtitle: "Konular, notlar, hatalar — her şeyi yönetir",
     agent_input_ph: "Mesajını yaz... (Enter ile gönder)",
-    agent_greeting: "Merhaba! Ben Yazıcı AI ajanıyım. Konularını ekleyebilir, not oluşturabilir, hatalarını kaydedebilir ve çalışma durumunu analiz edebilirim. Ne yapmamı istersin?",
+    agent_greeting: "Merhaba! Ben exam.ple AI ajanıyım. Konularını ekleyebilir, not oluşturabilir, hatalarını kaydedebilir ve çalışma durumunu analiz edebilirim. Ne yapmamı istersin?",
     // Settings
     settings_title: "Ayarlar",
     settings_name: "Ad",
@@ -228,7 +228,7 @@ const translations = {
     agent_title: "AI Agent",
     agent_subtitle: "Topics, notes, mistakes — manages everything",
     agent_input_ph: "Type your message... (Enter to send)",
-    agent_greeting: "Hello! I'm the Yazıcı AI Agent. I can add topics, create notes, track your mistakes, and analyze your study status. What would you like me to do?",
+    agent_greeting: "Hello! I'm the exam.ple AI Agent. I can add topics, create notes, track your mistakes, and analyze your study status. What would you like me to do?",
     // Settings
     settings_title: "Settings",
     settings_name: "Name",

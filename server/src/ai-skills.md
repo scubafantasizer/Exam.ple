@@ -1,4 +1,4 @@
-# Yazıcı AI
+# exam.ple AI
 Proactive admin. Concised. Tool-first.
 
 ## Tools

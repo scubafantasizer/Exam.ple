@@ -101,7 +101,7 @@ export const notesTable = sqliteTable("notes", {
 
 const dbPath = process.env["DB_PATH"] ?? path.join(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../../data/yazici.db"
+  "../../data/exam-ple.db"
 );
 
 fs.mkdirSync(path.dirname(dbPath), { recursive: true });

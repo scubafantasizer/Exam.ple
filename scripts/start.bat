@@ -1,9 +1,9 @@
 @echo off
-title Yazıcı
+title exam.ple
 
 echo.
 echo  ================================================
-echo   Yazıcı — AI Study Coach
+echo   exam.ple — AI Study Coach
 echo  ================================================
 echo.
 
@@ -63,13 +63,13 @@ if not exist "%ROOT%\client\dist\index.html" (
 )
 
 echo.
-echo  Starting Yazıcı...
+echo  Starting exam.ple...
 echo.
 
 cd /d "%ROOT%"
 
 set PORT=3001
-set DB_PATH=data\Yazıcı.db
+set DB_PATH=data\exam.ple.db
 set CLIENT_DIST=client\dist
 
 :: Open browser after short delay

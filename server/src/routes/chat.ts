@@ -182,7 +182,7 @@ router.post("/chat/sessions/:sessionId/messages", async (req, res): Promise<void
 
     if (!model) throw new Error("Hiçbir Gemini modeli çalıştırılamadı.");
 
-    // Strict History Sanitization & Capping (Yazıcı Logic)
+    // Strict History Sanitization & Capping (exam.ple Logic)
     const historyLimit = 15;
     const slicedHistory = history.slice(0, -1).slice(-historyLimit);
     

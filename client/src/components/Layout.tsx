@@ -22,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div className="flex h-screen bg-gray-50 font-sans">
       <aside className="w-52 shrink-0 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-4 border-b border-gray-100">
-          <h1 className="text-lg font-bold text-indigo-700 tracking-tight">Yazıcı</h1>
+          <h1 className="text-lg font-bold text-indigo-700 tracking-tight">exam.ple</h1>
           <p className="text-xs text-gray-400 mt-0.5">AI Study Coach</p>
         </div>
         <nav className="flex-1 p-3 space-y-1 overflow-y-auto">

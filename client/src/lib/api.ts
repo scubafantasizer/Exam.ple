@@ -1,5 +1,5 @@
 const BASE = "/api";
-const syncChannel = new BroadcastChannel("Yazıcı-sync");
+const syncChannel = new BroadcastChannel("exam.ple-sync");
 
 async function req<T>(method: string, path: string, body?: unknown): Promise<T> {
   const res = await fetch(`${BASE}${path}`, {
