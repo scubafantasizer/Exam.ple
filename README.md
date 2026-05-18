@@ -83,3 +83,9 @@ The application is fully localized. You can switch between **Turkish** and **Eng
 ## ⚖️ License
 
 Built with ❤️ for students. Privacy-first, local-first.
+
+
+## Upcoming Changes
+The project is under construction. The next changes will be;
+-Adding a calendar,
+-Fixing the unnatural token usage problem.
